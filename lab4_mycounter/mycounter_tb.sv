@@ -1,11 +1,11 @@
-`timescale 5ns/1ns
+`timescale 1ns/1ns
 module mycounter_tb ( );
 
     logic clk = 0, reset = 1, ena = 0;
     logic [7:0] count;
 
     //create simulated clock signal
-    always #1 clk = ~clk;
+    always #5 clk = ~clk;
 
     // instanciate mycounter module
     mycounter DUT(.clk(clk),
