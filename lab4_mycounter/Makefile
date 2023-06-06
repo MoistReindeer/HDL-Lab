@@ -7,7 +7,8 @@ init:
 test: mycounter_tb.sv mycounter.sv
 	iverilog -g2012 -o ./build/output mycounter_tb.sv mycounter.sv
 	vvp ./build/output
-	gtkwave ./build/counter.vcd &
 
+waveform: init test
+	gtkwave ./build/counter.vcd &
 clean:
 	rm -rd build
