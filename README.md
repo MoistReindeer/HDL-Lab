@@ -1,6 +1,6 @@
-# HDL-QuickLogic Tests
+# HDL-Files
 
-A repo to store HDL tests for the Sparkfun QuickLogic board
+A repo to document some F4PGA related scripts
 
 ## F4PGA-Installation
 
