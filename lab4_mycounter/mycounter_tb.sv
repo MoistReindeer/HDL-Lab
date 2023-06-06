@@ -16,12 +16,11 @@ module mycounter_tb ( );
     initial begin
         $dumpfile("./build/counter.vcd");
         $dumpvars(0, mycounter_tb);
-        $monitor($time,"%b, %b, %b, %d", clk, reset, ena, count);
         #56ns;
         reset = 0;
         #50ns;
         ena = 1;
-        #200ns;
+        #2750ns;
         $finish;
     end
 endmodule
