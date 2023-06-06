@@ -1,6 +1,6 @@
 GTKW = $(shell pgrep gtkwave)
 
-all: init ./build/calculator_input.fst
+all: init ./build/calculator.fst
 
 init:
 	mkdir -p ./build/
@@ -52,6 +52,13 @@ endif
 	./build/Vcalculator_input_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/calculator_input.fst &
+endif
+
+./build/calculator.fst: calculator_tb.sv calculator.sv slider_increment.sv input_sync.sv debounce.sv arithmetic.sv bcd_mux.sv seg_dec.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ calculator_tb.sv calculator.sv slider_increment.sv input_sync.sv debounce.sv arithmetic.sv bcd_mux.sv seg_dec.sv
+	./build/Vcalculator_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/calculator.fst &
 endif
 
 clean:
