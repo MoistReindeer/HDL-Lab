@@ -16,6 +16,15 @@ $ ./install.sh -eos
 $ ./install.sh -xc7
 ```
 
+## YOSYS OSS-CAD Suite
+```
+# Install from AUR
+$ yay -S oss-cad-suite-build-bin
+
+# Activate the environment
+$ source /opt/oss-cad-suite/environment
+```
+
 ## Additional tools
 
 ```
