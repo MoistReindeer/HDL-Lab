@@ -14,6 +14,12 @@ else
     exit 1
 fi
 
+if ! command -v wget &> /dev/null
+then
+    echo "wget not found! Exiting!"
+    exit
+fi
+
 # Both fetched from here: https://f4pga-examples.readthedocs.io/en/latest/getting.html
 export F4PGA_TIMESTAMP='20220920-124259'
 export F4PGA_HASH='007d1c1'
