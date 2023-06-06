@@ -9,16 +9,16 @@ module debounce (
     logic rst = rst_ext | undeb;
 
     always_ff @( posedge clk ) begin
-        if (rst && cnt == 10)
+        if (rst && cnt == 999999)
             cnt <= 0;
-        else if (cnt == 10)
+        else if (cnt == 999999)
             cnt <= cnt;
         else
             cnt <= cnt + 1;
     end
 
     // Check if expired
-    assign exp = (cnt == 10) ? 1 : 0;
+    assign exp = (cnt == 999999) ? 1 : 0;
 
     assign deb = exp & undeb;
 
