@@ -17,7 +17,6 @@ module calculator #(
     output logic [3:0] digit_select,
     output logic [6:0] led_select
 );
-    logic enable = 1;
     
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent, btn_add, btn_sub;
@@ -109,20 +108,13 @@ module calculator #(
         endcase
     end
 
-    logic [3:0] disp_number;
-
-    bcd_mux #(
+    display #(
         .REFRESH_OVERFLOW(REFRESH_OVERFLOW)
-    ) bcd_mod (
+    ) display (
         .clk(clk),
-        .enable(enable),
         .reset(reset),
-        .number(display_number),
-        .output_number(disp_number),
-        .digit_select(digit_select));
-    
-    seg_dec seg_dec_mod (
-        .disp_num(disp_number),
-        .bcn(led_select));
+        .to_display_nr(display_number),
+        .digit_select(digit_select),
+        .led_select(led_select));
 
 endmodule
