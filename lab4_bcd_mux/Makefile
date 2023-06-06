@@ -1,6 +1,6 @@
 GTKW = $(shell pgrep gtkwave)
 
-all: init bcd_mux_tb
+all: init ./build/arithmetic.fst
 
 init:
 	mkdir -p ./build/
@@ -17,6 +17,13 @@ bcd_mux_tb: bcd_mux_tb.sv bcd_mux.sv
 	./obj_dir/Vbcd_mux_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/seg_dec.vcd &
+endif
+
+./build/arithmetic.fst: arithmetic_tb.sv arithmetic.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ arithmetic_tb.sv arithmetic.sv
+	./build/Varithmetic_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/arithmetic.fst &
 endif
 
 clean:
