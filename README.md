@@ -10,10 +10,10 @@ The required files can be installed with the scripts:
 
 ``` 
 # Installs the EOS-Quicklogic environment
-$ ./install_eos.sh
+$ ./install.sh -eos
 
 # Installs the Artix 7 environment
-$ ./install_xc7.sh
+$ ./install.sh -xc7
 ```
 
 ## Activate the environment
