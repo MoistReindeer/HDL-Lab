@@ -1,3 +1,4 @@
+`timescale 5ns/1ns
 module mycounter_tb ( );
 
     logic clk = 0, reset = 1, ena = 0;
