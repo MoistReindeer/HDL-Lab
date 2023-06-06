@@ -28,7 +28,10 @@ $ source /opt/oss-cad-suite/environment
 ## Additional tools
 
 ```
-# Install iverilog for simulation
+# Install verilator for SystemVerilog simulator
+$ sudo pacman -S verilator
+
+# Alternatively install iverilog for simulation
 $ sudo pacman -S iverilog
 
 # Install gtkwave to view simulation results
