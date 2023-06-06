@@ -28,4 +28,3 @@ endif
 
 clean:
 	rm -rd build
-	rm -rd obj_dir
