@@ -39,14 +39,14 @@ module slider_increment (
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(cnt_1 == 32500000)
+        if(cnt_1 == 4)
             number_1 <= number_1 + 1;
-        else if(cnt_2 == 32500000)
+        else if(cnt_2 == 4)
             number_1 <= number_1 + 10;
-        else if(cnt_3 == 32500000)
-            number_1 <= number_1 + 10;
-        else if(cnt_4 == 32500000)
-            number_1 <= number_1 + 10;
+        else if(cnt_3 == 4)
+            number_1 <= number_1 + 100;
+        else if(cnt_4 == 4)
+            number_1 <= number_1 + 1000;
     end
 
 endmodule
