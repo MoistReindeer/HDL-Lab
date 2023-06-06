@@ -9,7 +9,7 @@ module debounce (
     logic rst = rst_ext | undeb;
 
     always_ff @( posedge clk ) begin
-        if (rst)
+        if (rst && cnt == 10)
             cnt <= 0;
         else if (cnt == 10)
             cnt <= cnt;

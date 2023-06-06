@@ -26,25 +26,25 @@ module debounce_tb ();
     initial begin
         $dumpfile("./build/debounce.fst");
         $dumpvars(0, DUT_bt, DUT_sl);
-        #1ns;
+        #2ns;
         reset = 0;
-        #1ns;
+        #2ns;
         button = 1;
-        #1ns;
+        #2ns;
         button = 0;
-        #1ns;
+        #2ns;
         button = 1;
         #50ns;
         button = 0;
 
         slider = 1;
-        #1ns;
+        #2ns;
         slider = 0;
-        #1ns;
+        #2ns;
         slider = 1;
-        #1ns;
-        slider = 0;
         #50ns;
+        slider = 0;
+        #2ns;
         $finish;
     end
 
