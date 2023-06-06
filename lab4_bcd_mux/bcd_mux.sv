@@ -4,7 +4,6 @@ module bcd_mux #(
     parameter REFRESH_OVERFLOW = 2**19-1
 ) (
             input logic clk,
-            input logic enable,
             input logic reset,
             input logic [13:0] number,
             output logic [3:0] output_number,
@@ -27,7 +26,7 @@ module bcd_mux #(
             bit_cnt <= 0;
         else if (bit_cnt == REFRESH_OVERFLOW)
             bit_cnt <= 0;
-        else if (enable)
+        else
             bit_cnt <= bit_cnt + 1;
     end
 

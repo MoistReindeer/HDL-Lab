@@ -10,7 +10,9 @@ module bcd_mux_tb ( );
 
     always #5ns clk <= ~clk;
 
-    bcd_mux DUT(
+    bcd_mux #(
+        .REFRESH_OVERFLOW(8)
+    ) DUT (
             .clk(clk),
             .enable(ena),
             .reset(rst),
