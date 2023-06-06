@@ -1,4 +1,6 @@
-module calculator_input (
+module calculator_input #(
+    parameter DB_OVERFLOW = 100000000
+)(
     input logic clk,
     input logic reset,
     input logic button_clr_undeb,
@@ -22,7 +24,7 @@ module calculator_input (
     // Syncronize and debounce buttons
     // Clear-Button
     logic button_clr_deb;
-    debounce clr_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) clr_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(button_clr_undeb),
@@ -36,7 +38,7 @@ module calculator_input (
     
     // Enter-Button
     logic button_ent_deb;
-    debounce ent_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) ent_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(button_ent_undeb),
@@ -50,7 +52,7 @@ module calculator_input (
     
     // Add-Button
     logic button_add_deb;
-    debounce add_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) add_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(button_add_undeb),
@@ -65,7 +67,7 @@ module calculator_input (
 
     // Subtract-Button
     logic button_sub_deb;
-    debounce sub_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sub_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(button_sub_undeb),
@@ -80,7 +82,7 @@ module calculator_input (
     // Debounce and sync sliders
     // Slider 1 - 1er
     logic slider_1_deb;
-    debounce sld_1_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sld_1_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(slider_1_undeb),
@@ -94,7 +96,7 @@ module calculator_input (
     
     // Slider 2 - 10er
     logic slider_2_deb;
-    debounce sld_2_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sld_2_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(slider_2_undeb),
@@ -108,7 +110,7 @@ module calculator_input (
     
     // Slider 3 - 100er
     logic slider_3_deb;
-    debounce sld_3_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sld_3_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(slider_3_undeb),
@@ -122,7 +124,7 @@ module calculator_input (
     
     // Slider 4 - 1000er
     logic slider_4_deb;
-    debounce sld_4_deb (
+    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sld_4_deb (
         .clk(clk),
         .rst_ext(reset),
         .undeb(slider_4_undeb),

@@ -1,5 +1,9 @@
 /* verilator lint_off UNUSEDSIGNAL */
-module calculator (
+module calculator #(
+    parameter REFRESH_OVERFLOW = 2**19-1,
+    parameter DB_OVERFLOW = 100000000,
+    parameter SLIDER_OVERFLOW = 32500000
+)(
     input logic clk,
     input logic reset,
     input logic button_clr_undeb,
@@ -18,7 +22,9 @@ module calculator (
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent, btn_add, btn_sub;
     logic sld_1, sld_2, sld_3, sld_4;
-    calculator_input input_mod (
+    calculator_input #(
+        .DB_OVERFLOW(DB_OVERFLOW)
+    ) input_mod (
         .clk(clk),
         .reset(reset),
         .button_clr_undeb(button_clr_undeb),
@@ -50,7 +56,9 @@ module calculator (
             output_number_select <= output_number_select;
     end
 
-    slider_increment slider_mod (
+    slider_increment #(
+        .SLIDER_OVERFLOW(SLIDER_OVERFLOW)
+    ) slider_mod (
         .clk(clk), 
         .rst_ext(reset),
         .slider_1(sld_1),
@@ -103,7 +111,9 @@ module calculator (
 
     logic [3:0] disp_number;
 
-    bcd_mux bcd_mod (
+    bcd_mux #(
+        .REFRESH_OVERFLOW(REFRESH_OVERFLOW)
+    ) bcd_mod (
         .clk(clk),
         .enable(enable),
         .reset(reset),

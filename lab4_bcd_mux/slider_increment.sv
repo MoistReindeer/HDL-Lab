@@ -1,4 +1,6 @@
-module slider_increment (
+module slider_increment #(
+    parameter SLIDER_OVERFLOW = 32500000
+)(
     input logic clk,
     input logic rst_ext,
     input logic slider_1,
@@ -40,26 +42,26 @@ module slider_increment (
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(cnt_1 == 32500000 && write_number_select == 0)
+        if(cnt_1 == SLIDER_OVERFLOW && write_number_select == 0)
             number_1 <= number_1 + 1;
-        else if(cnt_1 == 32500000 && write_number_select == 1)
+        else if(cnt_1 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 1;
-        else if(cnt_2 == 32500000 && write_number_select == 0)
+        else if(cnt_2 == SLIDER_OVERFLOW && write_number_select == 0)
             number_1 <= number_1 + 10;
-        else if(cnt_2 == 32500000 && write_number_select == 1)
+        else if(cnt_2 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 10;
-        else if(cnt_3 == 32500000 && write_number_select == 0)
+        else if(cnt_3 == SLIDER_OVERFLOW && write_number_select == 0)
             number_1 <= number_1 + 100;
-        else if(cnt_3 == 32500000 && write_number_select == 1)
+        else if(cnt_3 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 100;
-        else if(cnt_4 == 32500000 && write_number_select == 0)
+        else if(cnt_4 == SLIDER_OVERFLOW && write_number_select == 0)
             number_1 <= number_1 + 1000;
-        else if(cnt_4 == 32500000 && write_number_select == 1)
+        else if(cnt_4 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 1000;
     end
 
     always_comb begin
-        if(cnt_1 == 32500000 || cnt_2 == 32500000 || cnt_3 == 32500000 || cnt_4 == 32500000)
+        if(cnt_1 == SLIDER_OVERFLOW || cnt_2 == SLIDER_OVERFLOW || cnt_3 == SLIDER_OVERFLOW || cnt_4 == SLIDER_OVERFLOW)
             rst_int = 1;
         else
             rst_int = 0;
