@@ -1,6 +1,6 @@
 GTKW = $(shell pgrep gtkwave)
 
-all: init ./build/input_sync.fst
+all: init ./build/slider_increment.fst
 
 init:
 	mkdir -p ./build/
@@ -38,6 +38,13 @@ endif
 	./build/Vinput_sync_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/input_sync.fst &
+endif
+
+./build/slider_increment.fst: slider_increment_tb.sv slider_increment.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ slider_increment_tb.sv slider_increment.sv
+	./build/Vslider_increment_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/slider_increment.fst &
 endif
 
 clean:
