@@ -19,7 +19,7 @@ module bcd_mux_tb ( );
             .digit_select(digit_select));
 
     initial begin
-        $dumpfile("./build/bcd_mux.vcd");
+        $dumpfile("./build/bcd_mux.fst");
         $dumpvars(0, DUT);
         #1ns;
         number_in = 0;

@@ -7,16 +7,16 @@ init:
 
 seg_dec_tb: seg_dec_tb.sv seg_dec.sv
 	verilator --binary -j 0 -Wall --trace -Mdir ./build/ seg_dec_tb.sv seg_dec.sv
-	./obj_dir/Vseg_dec_tb
+	./build/Vseg_dec_tb
 ifeq ($(GTKW),)
-	gtkwave ./build/seg_dec.vcd &
+	gtkwave ./build/seg_dec.fst &
 endif
 
 bcd_mux_tb: bcd_mux_tb.sv bcd_mux.sv
 	verilator --binary -j 0 -Wall --trace -Mdir ./build/ bcd_mux_tb.sv bcd_mux.sv
-	./obj_dir/Vbcd_mux_tb
+	./build/Vbcd_mux_tb
 ifeq ($(GTKW),)
-	gtkwave ./build/seg_dec.vcd &
+	gtkwave ./build/seg_dec.fst &
 endif
 
 ./build/arithmetic.fst: arithmetic_tb.sv arithmetic.sv

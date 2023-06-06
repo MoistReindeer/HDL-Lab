@@ -13,7 +13,7 @@ module seg_dec_tb ( );
                     .bcn(led_select));
 
     initial begin
-        $dumpfile("./build/seg_dec.vcd");
+        $dumpfile("./build/seg_dec.fst");
         $dumpvars(0, decoder);
         #1ns;
 
