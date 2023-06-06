@@ -40,26 +40,26 @@ module slider_increment (
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(cnt_1 == 4 && write_number_select == 0)
+        if(cnt_1 == 32500000 && write_number_select == 0)
             number_1 <= number_1 + 1;
-        else if(cnt_1 == 4 && write_number_select == 1)
+        else if(cnt_1 == 32500000 && write_number_select == 1)
             number_2 <= number_2 + 1;
-        else if(cnt_2 == 4 && write_number_select == 0)
+        else if(cnt_2 == 32500000 && write_number_select == 0)
             number_1 <= number_1 + 10;
-        else if(cnt_2 == 4 && write_number_select == 1)
+        else if(cnt_2 == 32500000 && write_number_select == 1)
             number_2 <= number_2 + 10;
-        else if(cnt_3 == 4 && write_number_select == 0)
+        else if(cnt_3 == 32500000 && write_number_select == 0)
             number_1 <= number_1 + 100;
-        else if(cnt_3 == 4 && write_number_select == 1)
+        else if(cnt_3 == 32500000 && write_number_select == 1)
             number_2 <= number_2 + 100;
-        else if(cnt_4 == 4 && write_number_select == 0)
+        else if(cnt_4 == 32500000 && write_number_select == 0)
             number_1 <= number_1 + 1000;
-        else if(cnt_4 == 4 && write_number_select == 1)
+        else if(cnt_4 == 32500000 && write_number_select == 1)
             number_2 <= number_2 + 1000;
     end
 
     always_comb begin
-        if(cnt_1 == 4 || cnt_2 == 4 || cnt_3 == 4 || cnt_4 == 4)
+        if(cnt_1 == 32500000 || cnt_2 == 32500000 || cnt_3 == 32500000 || cnt_4 == 32500000)
             rst_int = 1;
         else
             rst_int = 0;
