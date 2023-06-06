@@ -16,7 +16,7 @@ module calculator_input_tb ();
     logic sld_async [4];
     logic sld [4];
 
-    calculator_input DUT (
+    calculator_input #(.DB_OVERFLOW(4)) DUT (
         .clk(clk),
         .reset(rst),
         .button_clr_undeb(btn_clr_async),
