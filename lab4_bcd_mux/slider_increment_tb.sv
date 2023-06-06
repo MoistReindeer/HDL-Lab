@@ -9,7 +9,7 @@ module slider_increment_tb ();
     logic slider_2 = 0;
     logic slider_3 = 0;
     logic slider_4 = 0;
-
+    logic [13:0] number_1, number_2;
 
     slider_increment DUT (
                         .clk(clk),
@@ -17,7 +17,9 @@ module slider_increment_tb ();
                         .slider_1(slider_1),
                         .slider_2(slider_2),
                         .slider_3(slider_3),
-                        .slider_4(slider_4)
+                        .slider_4(slider_4),
+                        .number_1(number_1),
+                        .number_2(number_2)
                         );
 
     initial begin
@@ -50,7 +52,6 @@ module slider_increment_tb ();
         slider_1 = 0;
         #10ns;
         slider_2 = 0;
-        #1ns;
         $finish;
     end
 
