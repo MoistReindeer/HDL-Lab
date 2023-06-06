@@ -1,11 +1,11 @@
-`timescale 1ns/1ns
 module mycounter_tb ( );
+    timeprecision 100ps;
 
     logic clk = 0, reset = 1, ena = 0;
     logic [7:0] count;
 
     //create simulated clock signal
-    always #5 clk = ~clk;
+    always #5ns clk = ~clk;
 
     // instanciate mycounter module
     mycounter DUT(.clk(clk),
@@ -17,11 +17,11 @@ module mycounter_tb ( );
         $dumpfile("./build/counter.vcd");
         $dumpvars(0, mycounter_tb);
         $monitor($time,"%b, %b, %b, %d", clk, reset, ena, count);
-        #56;
+        #56ns;
         reset = 0;
-        #50;
+        #50ns;
         ena = 1;
-        #200;
+        #200ns;
         $finish;
     end
 endmodule
