@@ -1,14 +1,14 @@
+/* verilator lint_off UNUSEDSIGNAL */
 module bcd_mux_tb ( );
-    timeprecision 1ns;
-
     logic clk = 0;
     logic ena = 0;
     logic rst = 0;
     logic [13:0] number_in;
     logic [3:0] muxed_number;
-    output logic [3:0] split_out[4];
+    logic [3:0] split_out[4];
+    logic [3:0] digit_select;
 
-    always #5ns clk = ~clk;
+    always #5ns clk <= ~clk;
 
     bcd_mux DUT(
             .clk(clk),
@@ -16,10 +16,10 @@ module bcd_mux_tb ( );
             .reset(rst),
             .number(number_in),
             .output_number(muxed_number),
-            .split_out(split_out));
-    
+            .digit_select(digit_select));
+
     initial begin
-        $dumpfile("./build/data.vcd");
+        $dumpfile("./build/bcd_mux.vcd");
         $dumpvars(0, DUT);
         #1ns;
         number_in = 0;
@@ -28,7 +28,7 @@ module bcd_mux_tb ( );
         rst = 0;
         #1ns;
         ena = 1;
-        
+
         for (int i = 0; i < 100; i++)
         begin
             number_in = number_in + 1;
