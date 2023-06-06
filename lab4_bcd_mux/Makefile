@@ -47,6 +47,13 @@ ifeq ($(GTKW),)
 	gtkwave ./build/slider_increment.fst &
 endif
 
+./build/display.fst: display_tb.sv display.sv bcd_mux.sv seg_dec.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ display_tb.sv display.sv bcd_mux.sv seg_dec.sv
+	./build/Vdisplay_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/display.fst &
+endif
+
 ./build/calculator_input.fst: calculator_input_tb.sv calculator_input.sv debounce.sv input_sync.sv
 	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ calculator_input_tb.sv calculator_input.sv debounce.sv input_sync.sv
 	./build/Vcalculator_input_tb
