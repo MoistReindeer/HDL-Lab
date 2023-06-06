@@ -1,0 +1,53 @@
+# Clock pin
+set_property PACKAGE_PIN W5 [get_ports {clk}]
+set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
+
+# Display-Select
+set_property PACKAGE_PIN W4 [get_ports {digit_select[3]}]
+set_property PACKAGE_PIN V4 [get_ports {digit_select[2]}]
+set_property PACKAGE_PIN U4 [get_ports {digit_select[1]}]
+set_property PACKAGE_PIN U2 [get_ports {digit_select[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[0]}]
+
+# LEDs
+set_property PACKAGE_PIN W7 [get_ports {led_select[0]}]
+set_property PACKAGE_PIN W6 [get_ports {led_select[1]}]
+set_property PACKAGE_PIN U8 [get_ports {led_select[2]}]
+set_property PACKAGE_PIN V8 [get_ports {led_select[3]}]
+set_property PACKAGE_PIN U5 [get_ports {led_select[4]}]
+set_property PACKAGE_PIN V5 [get_ports {led_select[5]}]
+set_property PACKAGE_PIN U7 [get_ports {led_select[6]}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {led_select[6]}]
+
+# Buttons
+set_property PACKAGE_PIN U18 [get_ports {button_ent_undeb}]
+set_property PACKAGE_PIN W19 [get_ports {button_add_undeb}]
+set_property PACKAGE_PIN T17 [get_ports {button_sub_undeb}]
+set_property PACKAGE_PIN T18 [get_ports {button_clr_undeb}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {button_ent_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {button_add_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {button_sub_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {button_clr_undeb}]
+
+# Sliders
+set_property PACKAGE_PIN V17 [get_ports {slider_1_undeb}]
+set_property PACKAGE_PIN V16 [get_ports {slider_2_undeb}]
+set_property PACKAGE_PIN W16 [get_ports {slider_3_undeb}]
+set_property PACKAGE_PIN W17 [get_ports {slider_4_undeb}]
+
+set_property IOSTANDARD LVCMOS33 [get_ports {slider_1_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {slider_2_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {slider_3_undeb}]
+set_property IOSTANDARD LVCMOS33 [get_ports {slider_4_undeb}]
+

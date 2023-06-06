@@ -1,9 +1,7 @@
 /* verilator lint_off UNUSEDSIGNAL */
-/* verilator lint_off LATCH */
 module calculator (
     input logic clk,
     input logic reset,
-    input logic enable,
     input logic button_clr_undeb,
     input logic button_add_undeb,
     input logic button_sub_undeb,
@@ -11,8 +9,11 @@ module calculator (
     input logic slider_1_undeb,
     input logic slider_2_undeb,
     input logic slider_3_undeb,
-    input logic slider_4_undeb
+    input logic slider_4_undeb,
+    output logic [3:0] digit_select,
+    output logic [6:0] led_select
 );
+    logic enable = 1;
     
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent, btn_add, btn_sub;
@@ -50,7 +51,7 @@ module calculator (
     end
 
     slider_increment slider_mod (
-        .clk(clk),
+        .clk(clk), 
         .rst_ext(reset),
         .slider_1(sld_1),
         .slider_2(sld_2),
@@ -64,11 +65,13 @@ module calculator (
 
     // Selects the arithmetic operation
     logic arithmetic_select;
-    always_comb begin
+    always_ff @( posedge clk ) begin
         if (btn_sub)
-            arithmetic_select = 1;
+            arithmetic_select <= 1;
         else if (btn_add)
-            arithmetic_select = 0;
+            arithmetic_select <= 0;
+        else
+            arithmetic_select <= arithmetic_select;
     end
     
     // Arithmetic module
@@ -99,7 +102,6 @@ module calculator (
     end
 
     logic [3:0] disp_number;
-    logic [3:0] digit_select;
 
     bcd_mux bcd_mod (
         .clk(clk),
@@ -109,7 +111,6 @@ module calculator (
         .output_number(disp_number),
         .digit_select(digit_select));
     
-    logic [6:0] led_select;
     seg_dec seg_dec_mod (
         .disp_num(disp_number),
         .bcn(led_select));
