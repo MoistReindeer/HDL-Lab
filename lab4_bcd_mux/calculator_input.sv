@@ -1,4 +1,3 @@
-/* verilator lint_off UNUSEDSIGNAL */
 module calculator_input (
     input logic clk,
     input logic reset,
@@ -6,20 +5,19 @@ module calculator_input (
     input logic button_add_undeb,
     input logic button_sub_undeb,
     input logic button_ent_undeb,
+    output logic button_clr,
+    output logic button_ent,
+    output logic button_add,
+    output logic button_sub,
     input logic slider_1_undeb,
     input logic slider_2_undeb,
     input logic slider_3_undeb,
-    input logic slider_4_undeb
+    input logic slider_4_undeb,
+    output logic slider_1,
+    output logic slider_2,
+    output logic slider_3,
+    output logic slider_4
 );
-
-    logic button_clr;
-    logic button_ent;
-    logic button_add;
-    logic button_sub;
-    logic slider_1;
-    logic slider_2;
-    logic slider_3;
-    logic slider_4;
 
     // Syncronize and debounce buttons
     // Clear-Button
