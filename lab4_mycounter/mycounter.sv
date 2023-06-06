@@ -3,7 +3,7 @@ module mycounter (
     input logic enable,
     output logic [7:0] cnt
 );
-    
+
     always_ff @( posedge clk ) begin
         if (reset)
             cnt <= 0;
