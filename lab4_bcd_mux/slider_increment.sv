@@ -5,6 +5,7 @@ module slider_increment (
     input logic slider_2,
     input logic slider_3,
     input logic slider_4,
+    input logic write_number_select,
     output logic [13:0] number_1,
     output logic [13:0] number_2
 );
@@ -39,14 +40,22 @@ module slider_increment (
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(cnt_1 == 4)
+        if(cnt_1 == 4 && write_number_select == 0)
             number_1 <= number_1 + 1;
-        else if(cnt_2 == 4)
+        else if(cnt_1 == 4 && write_number_select == 1)
+            number_2 <= number_2 + 1;
+        else if(cnt_2 == 4 && write_number_select == 0)
             number_1 <= number_1 + 10;
-        else if(cnt_3 == 4)
+        else if(cnt_2 == 4 && write_number_select == 1)
+            number_2 <= number_2 + 10;
+        else if(cnt_3 == 4 && write_number_select == 0)
             number_1 <= number_1 + 100;
-        else if(cnt_4 == 4)
+        else if(cnt_3 == 4 && write_number_select == 1)
+            number_2 <= number_2 + 100;
+        else if(cnt_4 == 4 && write_number_select == 0)
             number_1 <= number_1 + 1000;
+        else if(cnt_4 == 4 && write_number_select == 1)
+            number_2 <= number_2 + 1000;
     end
 
     always_comb begin
