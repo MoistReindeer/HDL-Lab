@@ -1,6 +1,6 @@
 GTKW = $(shell pgrep gtkwave)
 
-all: init ./build/arithmetic.fst
+all: init ./build/debounce.fst
 
 init:
 	mkdir -p ./build/
@@ -24,6 +24,13 @@ endif
 	./build/Varithmetic_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/arithmetic.fst &
+endif
+
+./build/debounce.fst: debounce_tb.sv debounce.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ debounce_tb.sv debounce.sv
+	./build/Vdebounce_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/debounce.fst &
 endif
 
 clean:
