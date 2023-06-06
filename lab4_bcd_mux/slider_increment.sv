@@ -9,7 +9,7 @@ module slider_increment (
     output logic [13:0] number_2
 );
 
-    logic rst_int = 0;
+    logic rst_int;
     logic rst = 0;
 
     assign rst = rst_ext | rst_int;
@@ -47,6 +47,13 @@ module slider_increment (
             number_1 <= number_1 + 100;
         else if(cnt_4 == 4)
             number_1 <= number_1 + 1000;
+    end
+
+    always_comb begin
+        if(cnt_1 == 4 || cnt_2 == 4 || cnt_3 == 4 || cnt_4 == 4)
+            rst_int = 1;
+        else
+            rst_int = 0;
     end
 
 endmodule
