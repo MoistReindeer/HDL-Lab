@@ -1,6 +1,6 @@
 GTKW = $(shell pgrep gtkwave)
 
-all: init ./build/debounce.fst
+all: init ./build/input_sync.fst
 
 init:
 	mkdir -p ./build/
@@ -31,6 +31,13 @@ endif
 	./build/Vdebounce_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/debounce.fst &
+endif
+
+./build/input_sync.fst: input_sync_tb.sv input_sync.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ input_sync_tb.sv input_sync.sv
+	./build/Vinput_sync_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/input_sync.fst &
 endif
 
 clean:
