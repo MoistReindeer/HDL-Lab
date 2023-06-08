@@ -9,18 +9,24 @@ module display #(
 );
     
     logic [3:0] digit_display;
+    logic [3:0] split_nr[4];
 
     bcd_mux #(
         .REFRESH_OVERFLOW(REFRESH_OVERFLOW)
     ) MUX (
         .clk(clk),
         .reset(reset),
-        .number(to_display_nr),
+        .number(split_nr),
         .output_number(digit_display),
         .digit_select(digit_select));
 
     seg_dec seg_dec_mod (
         .disp_num(digit_display),
         .bcn(led_select));
+    
+    // Splits the number into four decimal places
+    split_number number_mod (
+        .number_i(to_display_nr),
+        .number_o(split_nr));
     
 endmodule

@@ -3,17 +3,10 @@ module bcd_mux #(
 ) (
             input logic clk,
             input logic reset,
-            input logic [13:0] number,
+            input logic [3:0] number[4],
             output logic [3:0] output_number,
             output logic [3:0] digit_select
 );
-
-    // Splits the number into four decimal places
-    logic [3:0] split_nr[4];
-
-    split_number number_mod (
-        .number_i(number),
-        .number_o(split_nr));
 
     logic ppms;
 
@@ -54,10 +47,10 @@ module bcd_mux #(
     // Number MUX - Multiplexes one of the numbers onto the LED-Pins
     always_comb begin
         case (sel_cnt)
-            0   :   output_number = split_nr[0];
-            1   :   output_number = split_nr[1];
-            2   :   output_number = split_nr[2];
-            3   :   output_number = split_nr[3];
+            0   :   output_number = number[0];
+            1   :   output_number = number[1];
+            2   :   output_number = number[2];
+            3   :   output_number = number[3];
             default : output_number = 4'bxxxx;
         endcase
     end
