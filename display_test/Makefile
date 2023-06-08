@@ -1,7 +1,6 @@
 current_dir := $(CURDIR)
 TOP := top
 SOURCES := $(current_dir)/top.sv \
-	$(current_dir)/display.sv \
 	$(current_dir)/seg_dec.sv \
 	$(current_dir)/bcd_mux.sv
 
