@@ -3,7 +3,10 @@ module top #(
 ) (
     input logic clk,
     input logic reset,
-    input logic [3:0] split_nr[4],
+    input logic [3:0] split_nr_0,
+    input logic [3:0] split_nr_1,
+    input logic [3:0] split_nr_2,
+    input logic [3:0] split_nr_3,
     output logic [3:0] digit_select,
     output logic [6:0] led_select
 );
@@ -15,7 +18,10 @@ module top #(
     ) MUX (
         .clk(clk),
         .reset(reset),
-        .number(split_nr),
+        .number_0(split_nr_0),
+        .number_1(split_nr_1),
+        .number_2(split_nr_2),
+        .number_3(split_nr_3),
         .output_number(digit_display),
         .digit_select(digit_select));
 
