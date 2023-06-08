@@ -1,16 +1,11 @@
-GTKW = $(shell pgrep gtkwave)
+current_dir := $(CURDIR)
+TOP := top
+SOURCES := $(current_dir)/top.sv \
+	$(current_dir)/display.sv \
+	$(current_dir)/seg_dec.sv \
+	$(current_dir)/bcd_mux.sv
 
-all: init ./build/top.fst
+# XDC File
+XDC := $(current_dir)/basys3.xdc
 
-init:
-	mkdir -p ./build/
-
-./build/top.fst: bcd_mux.sv display.sv seg_dec.sv top.sv top_tb.sv
-	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ top_tb.sv top.sv bcd_mux.sv display.sv seg_dec.sv
-	./build/Vtop_tb
-ifeq ($(GTKW),)
-	gtkwave ./build/top.fst &
-endif
-
-clean:
-	rm -rd ./build/
+include ${current_dir}/../../f4pga-examples/common/common.mk
