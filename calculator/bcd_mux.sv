@@ -3,7 +3,10 @@ module bcd_mux #(
 ) (
             input logic clk,
             input logic reset,
-            input logic [3:0] number[4],
+            input logic [3:0] number_0,
+            input logic [3:0] number_1,
+            input logic [3:0] number_2,
+            input logic [3:0] number_3,
             output logic [3:0] output_number,
             output logic [3:0] digit_select
 );
@@ -47,10 +50,10 @@ module bcd_mux #(
     // Number MUX - Multiplexes one of the numbers onto the LED-Pins
     always_comb begin
         case (sel_cnt)
-            0   :   output_number = number[0];
-            1   :   output_number = number[1];
-            2   :   output_number = number[2];
-            3   :   output_number = number[3];
+            0   :   output_number = number_0;
+            1   :   output_number = number_1;
+            2   :   output_number = number_2;
+            3   :   output_number = number_3;
             default : output_number = 4'bxxxx;
         endcase
     end

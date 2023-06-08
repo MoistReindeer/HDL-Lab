@@ -16,7 +16,10 @@ module display #(
     ) MUX (
         .clk(clk),
         .reset(reset),
-        .number(split_nr),
+        .number_0(split_nr[0]),
+        .number_1(split_nr[1]),
+        .number_2(split_nr[2]),
+        .number_3(split_nr[3]),
         .output_number(digit_display),
         .digit_select(digit_select));
 
