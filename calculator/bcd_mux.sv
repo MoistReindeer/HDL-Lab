@@ -1,5 +1,3 @@
-/* verilator lint_off WIDTHTRUNC */
-/* verilator lint_off UNOPTFLAT */
 module bcd_mux #(
     parameter REFRESH_OVERFLOW = 2**19-1
 ) (
@@ -10,14 +8,14 @@ module bcd_mux #(
             output logic [3:0] digit_select
 );
 
-    logic [3:0] split_nr[4];
-    logic ppms;
-
     // Splits the number into four decimal places
-    assign split_nr[3] = number / 1000;
-    assign split_nr[2] = (number - split_nr[3] *1000)/100;
-    assign split_nr[1] = (number - split_nr[2] *100 - split_nr[3] *1000)/10;
-    assign split_nr[0] = (number - split_nr[1] *10 - split_nr[2] * 100 - split_nr[3] *1000);
+    logic [3:0] split_nr[4];
+
+    split_number number_mod (
+        .number_i(number),
+        .number_o(split_nr));
+
+    logic ppms;
 
     // 19-Bit counter
     logic [19:0] bit_cnt;

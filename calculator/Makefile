@@ -13,7 +13,7 @@ ifeq ($(GTKW),)
 endif
 
 ./build/bcd_mux.fst: ./testbench/bcd_mux_tb.sv bcd_mux.sv
-	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ ./testbench/bcd_mux_tb.sv bcd_mux.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ ./testbench/bcd_mux_tb.sv bcd_mux.sv split_number.sv
 	./build/Vbcd_mux_tb
 ifeq ($(GTKW),)
 	gtkwave ./build/bcd_mux.fst &

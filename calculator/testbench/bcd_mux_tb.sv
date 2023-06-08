@@ -14,7 +14,6 @@ module bcd_mux_tb ( );
         .REFRESH_OVERFLOW(8)
     ) DUT (
             .clk(clk),
-            .enable(ena),
             .reset(rst),
             .number(number_in),
             .output_number(muxed_number),
