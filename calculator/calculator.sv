@@ -5,7 +5,6 @@ module calculator #(
     parameter SLIDER_OVERFLOW = 32500000
 )(
     input logic clk,
-    input logic reset,
     input logic button_clr_undeb,
     input logic button_add_undeb,
     input logic button_sub_undeb,
@@ -17,7 +16,7 @@ module calculator #(
     output logic [3:0] digit_select,
     output logic [6:0] led_select
 );
-    
+    logic reset = 0;
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent, btn_add, btn_sub;
     logic sld_1, sld_2, sld_3, sld_4;

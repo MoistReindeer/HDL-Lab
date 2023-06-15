@@ -13,7 +13,6 @@ module slider_increment #(
 );
 
     logic rst_int;
-    logic rst = 0;
 
     assign rst = rst_ext | rst_int;
 
