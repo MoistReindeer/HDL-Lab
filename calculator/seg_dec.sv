@@ -6,16 +6,16 @@ module seg_dec (
     always_comb
     begin
         case (disp_num)
-            0   :   bcn = ~7'b1111110;
-            1   :   bcn = ~7'b0110000;
-            2   :   bcn = ~7'b1101101;
-            3   :   bcn = ~7'b1111001;
-            4   :   bcn = ~7'b0110011;
-            5   :   bcn = ~7'b1011011;
-            6   :   bcn = ~7'b1011110;
-            7   :   bcn = ~7'b1110000;
-            8   :   bcn = ~7'b1111111;
-            9   :   bcn = ~7'b1110011;
+            0   :   bcn = 7'b0000001;
+            1   :   bcn = 7'b1001111;
+            2   :   bcn = 7'b0010010;
+            3   :   bcn = 7'b0000110;
+            4   :   bcn = 7'b1001100;
+            5   :   bcn = 7'b0100100;
+            6   :   bcn = 7'b0100000;
+            7   :   bcn = 7'b0001111;
+            8   :   bcn = 7'b0000000;
+            9   :   bcn = 7'b0000100;
             default : bcn = 7'bxxxxxxx;
         endcase
     end
