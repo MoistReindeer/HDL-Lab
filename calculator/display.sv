@@ -30,6 +30,9 @@ module display #(
     // Splits the number into four decimal places
     split_number number_mod (
         .number_i(to_display_nr),
-        .number_o(split_nr));
+        .number_o0(split_nr[0]),
+        .number_o1(split_nr[1]),
+        .number_o2(split_nr[2]),
+        .number_o3(split_nr[3]));
     
 endmodule

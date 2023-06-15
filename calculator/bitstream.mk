@@ -8,7 +8,8 @@ SOURCES := $(current_dir)/calculator.sv \
 	$(current_dir)/input_sync.sv \
 	$(current_dir)/seg_dec.sv \
 	$(current_dir)/slider_increment.sv \
-	$(current_dir)/display.sv
+	$(current_dir)/display.sv \
+	$(current_dir)/split_number.sv
 
 # XDC File
 XDC := $(current_dir)/basys3.xdc
