@@ -17,7 +17,6 @@ module calculator_tb ();
                 .SLIDER_OVERFLOW(2)
     ) DUT (
         .clk(clk),
-        .reset(rst),
         .digit_select(digit_select),
         .led_select(led_select),
         .button_clr_undeb(btn_clr_in),
@@ -26,7 +25,7 @@ module calculator_tb ();
         .slider_2_undeb(sld_2_in),
         .slider_3_undeb(sld_3_in),
         .slider_4_undeb(sld_4_in),
-        .slider_arith_undeb(sld_arith_in));
+        .arithmetic_select(sld_arith_in));
     
     initial begin
         $dumpfile("./build/calculator.fst");
