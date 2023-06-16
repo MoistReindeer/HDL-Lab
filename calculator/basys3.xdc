@@ -45,11 +45,13 @@ set_property PACKAGE_PIN V17 [get_ports slider_1_undeb]
 set_property PACKAGE_PIN V16 [get_ports slider_2_undeb]
 set_property PACKAGE_PIN W16 [get_ports slider_3_undeb]
 set_property PACKAGE_PIN W17 [get_ports slider_4_undeb]
+set_property PACKAGE_PIN R2 [get_ports slider_arith_undeb]
 
 set_property IOSTANDARD LVCMOS33 [get_ports slider_1_undeb]
 set_property IOSTANDARD LVCMOS33 [get_ports slider_2_undeb]
 set_property IOSTANDARD LVCMOS33 [get_ports slider_3_undeb]
 set_property IOSTANDARD LVCMOS33 [get_ports slider_4_undeb]
+set_property IOSTANDARD LVCMOS33 [get_ports slider_arith_undeb]
 
 # Additional settings
 create_clock -period 10.000 -name clk100 -waveform {0.000 5.000} [get_ports clk]
