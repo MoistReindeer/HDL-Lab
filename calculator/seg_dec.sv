@@ -16,7 +16,7 @@ module seg_dec (
             7   :   bcn = 7'b0001111;
             8   :   bcn = 7'b0000000;
             9   :   bcn = 7'b0000100;
-            default : bcn = 7'bxxxxxxx;
+            default : bcn = 7'b1111111;
         endcase
     end
 endmodule
