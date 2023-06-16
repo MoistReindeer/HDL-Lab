@@ -9,17 +9,17 @@ module display #(
 );
     
     logic [3:0] digit_display;
-    logic [3:0] split_nr[4];
+    logic [3:0] split_nr_0, split_nr_1, split_nr_2, split_nr_3;
 
     bcd_mux #(
         .REFRESH_OVERFLOW(REFRESH_OVERFLOW)
     ) MUX (
         .clk(clk),
         .reset(reset),
-        .number_0(split_nr[0]),
-        .number_1(split_nr[1]),
-        .number_2(split_nr[2]),
-        .number_3(split_nr[3]),
+        .number_0(split_nr_0),
+        .number_1(split_nr_1),
+        .number_2(split_nr_2),
+        .number_3(split_nr_3),
         .output_number(digit_display),
         .digit_select(digit_select));
 
@@ -30,9 +30,9 @@ module display #(
     // Splits the number into four decimal places
     split_number number_mod (
         .number_i(to_display_nr),
-        .number_o0(split_nr[0]),
-        .number_o1(split_nr[1]),
-        .number_o2(split_nr[2]),
-        .number_o3(split_nr[3]));
+        .number_o0(split_nr_0),
+        .number_o1(split_nr_1),
+        .number_o2(split_nr_2),
+        .number_o3(split_nr_3));
     
 endmodule
