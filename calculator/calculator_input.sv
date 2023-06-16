@@ -11,12 +11,10 @@ module calculator_input #(
     input logic slider_2_undeb,
     input logic slider_3_undeb,
     input logic slider_4_undeb,
-    input logic slider_arith_undeb,
     output logic slider_1,
     output logic slider_2,
     output logic slider_3,
-    output logic slider_4,
-    output logic slider_arith
+    output logic slider_4
 );
 
     // Syncronize and debounce buttons
@@ -104,19 +102,5 @@ module calculator_input #(
         .rst(reset),
         .unsync(slider_4_deb),
         .synced(slider_4));
-    
-    // Arithmetic-Select Slider
-    logic slider_arith_deb;
-    debounce #(.DB_OVERFLOW(DB_OVERFLOW)) sld_arith_deb (
-        .clk(clk),
-        .rst_ext(reset),
-        .undeb(slider_arith_undeb),
-        .deb(slider_arith_deb));
-    
-    input_sync arith_sync (
-        .clk(clk),
-        .rst(reset),
-        .unsync(slider_arith_deb),
-        .synced(slider_arith));
 
 endmodule

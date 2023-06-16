@@ -12,7 +12,7 @@ module calculator #(
     input logic slider_2_undeb,
     input logic slider_3_undeb,
     input logic slider_4_undeb,
-    input logic slider_arith_undeb,
+    input logic arithmetic_select,
     output logic [3:0] digit_select,
     output logic [6:0] led_select
 );
@@ -31,14 +31,12 @@ module calculator #(
         .slider_2_undeb(slider_2_undeb),
         .slider_3_undeb(slider_3_undeb),
         .slider_4_undeb(slider_4_undeb),
-        .slider_arith_undeb(slider_arith_undeb),
         .button_clr(btn_clr),
         .button_ent(btn_ent),
         .slider_1(sld_1),
         .slider_2(sld_2),
         .slider_3(sld_3),
-        .slider_4(sld_4),
-        .slider_arith(sld_arith));
+        .slider_4(sld_4));
     
     // Module to handle the slider input
     logic output_number_select = 0;
@@ -66,16 +64,6 @@ module calculator #(
         .number_2(number_2));
     
     logic [13:0] number_result;
-
-    logic arithmetic_select;
-    always_ff @( posedge clk ) begin
-        if (btn_clr)
-            arithmetic_select <= 0;
-        else if (sld_arith)
-            arithmetic_select <= arithmetic_select + 1;
-        else
-            arithmetic_select <= arithmetic_select;
-    end
 
     // Arithmetic module
     arithmetic arithmetic_mod (
