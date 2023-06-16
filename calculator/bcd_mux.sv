@@ -24,13 +24,6 @@ module bcd_mux #(
             bit_cnt <= bit_cnt + 1;
     end
 
-    always_comb begin
-        if (bit_cnt == (REFRESH_OVERFLOW))
-            ppms = 1;
-        else
-            ppms = 0;
-    end
-
     // 10ms Pulse for Counter
     assign ppms = (bit_cnt == REFRESH_OVERFLOW) ? 1 : 0;
 
