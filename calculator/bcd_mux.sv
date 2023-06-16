@@ -54,7 +54,7 @@ module bcd_mux #(
             1   :   output_number = number_1;
             2   :   output_number = number_2;
             3   :   output_number = number_3;
-            default : output_number = 4'bxxxx;
+            default : output_number = 4'b0000;
         endcase
     end
 
