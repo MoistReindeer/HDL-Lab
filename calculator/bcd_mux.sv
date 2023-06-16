@@ -43,7 +43,7 @@ module bcd_mux #(
             1   :   digit_select = 4'b1101;
             2   :   digit_select = 4'b1011;
             3   :   digit_select = 4'b0111;
-            default : digit_select = 4'bxxxx;
+            default : digit_select = 4'b1110;
         endcase
     end
 

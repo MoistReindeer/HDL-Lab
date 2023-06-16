@@ -17,6 +17,7 @@ module calculator_tb ();
                 .SLIDER_OVERFLOW(2)
     ) DUT (
         .clk(clk),
+        .reset(rst),
         .digit_select(digit_select),
         .led_select(led_select),
         .button_clr_undeb(btn_clr_in),
@@ -39,13 +40,13 @@ module calculator_tb ();
         #20ns;
         sld_1_in = 0;
         sld_2_in = 1;
-        #40ns;
+        #80ns;
         sld_2_in = 0;
         sld_3_in = 1;
         #40ns;
         sld_3_in = 0;
         sld_4_in = 1;
-        #40ns;
+        #120ns;
         sld_4_in = 0;
         #5ns;
         btn_ent_in = 1;
@@ -53,18 +54,18 @@ module calculator_tb ();
         btn_ent_in = 0;
 
         // Set second number
-        #40ns;
+        #10ns;
         sld_1_in = 1;
-        #40ns;
+        #60ns;
         sld_1_in = 0;
         sld_2_in = 1;
-        #40ns;
+        #150ns;
         sld_2_in = 0;
         sld_3_in = 1;
         #40ns;
         sld_3_in = 0;
         sld_4_in = 1;
-        #40ns;
+        #200ns;
         sld_4_in = 0;
         #5ns;
         btn_ent_in = 1;
@@ -73,9 +74,9 @@ module calculator_tb ();
 
         #100ns;
         sld_arith_in = 1;
-        #10ns;
-        sld_arith_in = 0;
         #100ns;
+        sld_arith_in = 0;
+        #10ns;
 
         $finish;
     end
