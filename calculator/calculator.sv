@@ -19,7 +19,7 @@ module calculator #(
 
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent;
-    logic sld_1, sld_2, sld_3, sld_4, arithmetic_select;
+    logic sld_1, sld_2, sld_3, sld_4, sld_arith;
     calculator_input #(
         .DB_OVERFLOW(DB_OVERFLOW)
     ) input_mod (
@@ -38,7 +38,7 @@ module calculator #(
         .slider_2(sld_2),
         .slider_3(sld_3),
         .slider_4(sld_4),
-        .slider_arith(arithmetic_select));
+        .slider_arith(sld_arith));
     
     // Module to handle the slider input
     logic output_number_select = 0;
@@ -66,7 +66,17 @@ module calculator #(
         .number_2(number_2));
     
     logic [13:0] number_result;
-    
+
+    logic arithmetic_select;
+    always_ff @( posedge clk ) begin
+        if (btn_clr)
+            arithmetic_select <= 0;
+        else if (sld_arith)
+            arithmetic_select <= arithmetic_select + 1;
+        else
+            arithmetic_select <= arithmetic_select;
+    end
+
     // Arithmetic module
     arithmetic arithmetic_mod (
         .number1(number_1),
