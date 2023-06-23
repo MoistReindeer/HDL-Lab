@@ -2,7 +2,7 @@
 set_property PACKAGE_PIN W5 [get_ports {clk}]
 set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
 
-create_clock -period 10.000 -name clk100 -waveform {0.000 5.000} [get_ports {clk}]
+create_clock -period 10.000 -name clk100 -waveform {0.000 5.000} [get_ports clk]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property CFGBVS VCCO [current_design]
 
@@ -17,13 +17,13 @@ set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[1]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {digit_select[0]}]
 
 # LEDs
-set_property PACKAGE_PIN W7 [get_ports {led_select[0]}]
-set_property PACKAGE_PIN W6 [get_ports {led_select[1]}]
-set_property PACKAGE_PIN U8 [get_ports {led_select[2]}]
+set_property PACKAGE_PIN W7 [get_ports {led_select[6]}]
+set_property PACKAGE_PIN W6 [get_ports {led_select[5]}]
+set_property PACKAGE_PIN U8 [get_ports {led_select[4]}]
 set_property PACKAGE_PIN V8 [get_ports {led_select[3]}]
-set_property PACKAGE_PIN U5 [get_ports {led_select[4]}]
-set_property PACKAGE_PIN V5 [get_ports {led_select[5]}]
-set_property PACKAGE_PIN U7 [get_ports {led_select[6]}]
+set_property PACKAGE_PIN U5 [get_ports {led_select[2]}]
+set_property PACKAGE_PIN V5 [get_ports {led_select[1]}]
+set_property PACKAGE_PIN U7 [get_ports {led_select[0]}]
 
 set_property IOSTANDARD LVCMOS33 [get_ports {led_select[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {led_select[1]}]
