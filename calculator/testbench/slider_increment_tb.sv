@@ -12,7 +12,9 @@ module slider_increment_tb ();
     logic number_select = 0;
     logic [13:0] number_1, number_2;
 
-    slider_increment DUT (
+    slider_increment #(
+        .SLIDER_OVERFLOW(2)
+    ) DUT (
                         .clk(clk),
                         .rst_ext(rst),
                         .slider_1(slider_1),
