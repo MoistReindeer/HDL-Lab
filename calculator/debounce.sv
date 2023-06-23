@@ -12,7 +12,7 @@ module debounce #(
     assign rst = rst_ext | undeb;
 
     always_ff @( posedge clk ) begin
-        if (rst && cnt == DB_OVERFLOW)
+        if (rst)
             cnt <= 0;
         else if (cnt == DB_OVERFLOW)
             cnt <= cnt;
