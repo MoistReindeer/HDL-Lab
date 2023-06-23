@@ -13,6 +13,6 @@ module input_sync (
             input_signal <= {input_signal[1:0], unsync};
     end
 
-    always synced = ~input_signal[2] & input_signal[1];
+    assign synced = ~input_signal[2] & input_signal[1];
 
 endmodule
