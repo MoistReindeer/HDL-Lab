@@ -57,7 +57,7 @@ module calculator_input_tb ();
         sld_async[1] = 1;
         sld_async[2] = 1;
         sld_async[3] = 1;
-        #17ns;
+        #77ns;
         sld_async[0] = 0;
         sld_async[1] = 0;
         sld_async[2] = 0;
