@@ -3,19 +3,19 @@ module calculator_tb ();
     logic clk = 0;
     logic rst = 1;
 
-    always #1ns clk <= ~clk;
+    always #5ns clk <= ~clk;
 
     logic btn_clr_in = 0;
     logic btn_ent_in = 0;
-    logic sld_1_in, sld_2_in, sld_3_in, sld_4_in, sld_arith_in;
+    logic sld_1_in = 0;
+    logic sld_2_in = 0;
+    logic sld_3_in = 0;
+    logic sld_4_in = 0;
+    logic sld_arith_in = 0;
     logic [3:0] digit_select;
     logic [6:0] led_select;
 
-    calculator #(
-                .REFRESH_OVERFLOW(2),
-                .DB_OVERFLOW(8),
-                .SLIDER_OVERFLOW(2)
-    ) DUT (
+    calculator #() DUT (
         .clk(clk),
         .reset(rst),
         .digit_select(digit_select),
