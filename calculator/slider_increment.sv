@@ -42,7 +42,11 @@ module slider_increment #(
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(cnt_1 == SLIDER_OVERFLOW && write_number_select == 0)
+        if(rst) begin
+            number_1 <= 0;
+            number_2 <= 0;
+        end
+        else if(cnt_1 == SLIDER_OVERFLOW && write_number_select == 0)
             number_1 <= number_1 + 1;
         else if(cnt_1 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 1;
@@ -58,6 +62,10 @@ module slider_increment #(
             number_1 <= number_1 + 1000;
         else if(cnt_4 == SLIDER_OVERFLOW && write_number_select == 1)
             number_2 <= number_2 + 1000;
+        else begin
+            number_1 <= number_1;
+            number_2 <= number_2;
+        end
     end
 
     always_comb begin
