@@ -8,7 +8,8 @@ module debounce #(
 );
     logic [26:0] cnt;
     logic exp;
-    logic rst = rst_ext | undeb;
+    logic rst;
+    assign rst = rst_ext | undeb;
 
     always_ff @( posedge clk ) begin
         if (rst && cnt == DB_OVERFLOW)
