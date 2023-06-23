@@ -15,7 +15,11 @@ module calculator_tb ();
     logic [3:0] digit_select;
     logic [6:0] led_select;
 
-    calculator #() DUT (
+    calculator #(
+        .REFRESH_OVERFLOW(10),
+        .DB_OVERFLOW(1),
+        .SLIDER_OVERFLOW(1)
+    ) DUT (
         .clk(clk),
         .reset(rst),
         .digit_select(digit_select),
@@ -32,7 +36,7 @@ module calculator_tb ();
         $dumpfile("./build/calculator.fst");
         $dumpvars(0, DUT);
 
-        #5ns;
+        #15ns;
         rst = 0;
         #20ns;
         // Set first number
