@@ -1,24 +1,24 @@
 /* verilator lint_off UNUSEDSIGNAL */
 module calculator #(
     parameter REFRESH_OVERFLOW = 2**19-1,
-    parameter DB_OVERFLOW = 100000000,
+    parameter DB_OVERFLOW = 999999,
     parameter SLIDER_OVERFLOW = 32500000
 )(
     input logic clk,
     input logic reset,
     input logic button_clr_undeb,
     input logic button_ent_undeb,
-    input logic slider_1_undeb,
-    input logic slider_2_undeb,
-    input logic slider_3_undeb,
-    input logic slider_4_undeb,
-    input logic arithmetic_select,
+    input logic sld_1,
+    input logic sld_2,
+    input logic sld_3,
+    input logic sld_4,
+    input logic sld_arith,
     output logic [3:0] digit_select,
     output logic [6:0] led_select
 );
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent;
-    logic sld_1, sld_2, sld_3, sld_4, sld_arith;
+    //logic sld_1, sld_2, sld_3, sld_4, sld_arith;
     calculator_input #(
         .DB_OVERFLOW(DB_OVERFLOW)
     ) input_mod (
@@ -26,16 +26,19 @@ module calculator #(
         .reset(reset),
         .button_clr_undeb(button_clr_undeb),
         .button_ent_undeb(button_ent_undeb),
-        .slider_1_undeb(slider_1_undeb),
-        .slider_2_undeb(slider_2_undeb),
-        .slider_3_undeb(slider_3_undeb),
-        .slider_4_undeb(slider_4_undeb),
+        //.slider_1_undeb(slider_1_undeb),
+        //.slider_2_undeb(slider_2_undeb),
+        //.slider_3_undeb(slider_3_undeb),
+        //.slider_4_undeb(slider_4_undeb),
+        //.slider_arith_undeb(arithmetic_select),
         .button_clr(btn_clr),
-        .button_ent(btn_ent),
-        .slider_1(sld_1),
-        .slider_2(sld_2),
-        .slider_3(sld_3),
-        .slider_4(sld_4));
+        .button_ent(btn_ent)
+        //.slider_1(sld_1),
+        //.slider_2(sld_2),
+        //.slider_3(sld_3),
+        //.slider_4(sld_4),
+        //.slider_arith(sld_arith)
+        );
     
     // Module to handle the slider input
     logic output_number_select = 0;
@@ -68,7 +71,7 @@ module calculator #(
     arithmetic arithmetic_mod (
         .number1(number_1),
         .number2(number_2),
-        .arithmetic_sel(arithmetic_select),
+        .arithmetic_sel(sld_arith),
         .result(number_result));
     
     // Multiplexer for the display number
