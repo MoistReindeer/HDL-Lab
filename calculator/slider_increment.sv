@@ -18,10 +18,10 @@ module slider_increment #(
     assign rst = rst_ext | rst_int;
 
     // slider_1 - counter
-    logic [25:0] cnt_1 = 0;
-    logic [25:0] cnt_2 = 0;
-    logic [25:0] cnt_3 = 0;
-    logic [25:0] cnt_4 = 0;
+    logic [25:0] cnt_1;
+    logic [25:0] cnt_2;
+    logic [25:0] cnt_3;
+    logic [25:0] cnt_4;
 
     always_ff @( posedge clk ) begin
         if (rst) begin
@@ -42,7 +42,7 @@ module slider_increment #(
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(rst) begin
+        if(rst_ext) begin
             number_1 <= 0;
             number_2 <= 0;
         end
@@ -69,7 +69,7 @@ module slider_increment #(
     end
 
     always_comb begin
-        if(cnt_1 == SLIDER_OVERFLOW || cnt_2 == SLIDER_OVERFLOW || cnt_3 == SLIDER_OVERFLOW || cnt_4 == SLIDER_OVERFLOW)
+        if(cnt_1 > SLIDER_OVERFLOW || cnt_2 > SLIDER_OVERFLOW || cnt_3 > SLIDER_OVERFLOW || cnt_4 > SLIDER_OVERFLOW)
             rst_int = 1;
         else
             rst_int = 0;
