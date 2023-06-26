@@ -34,7 +34,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports {led_select[5]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {led_select[6]}]
 
 # Buttons
-set_property PACKAGE_PIN W18 [get_ports button_ent_undeb]
+set_property PACKAGE_PIN W19 [get_ports button_ent_undeb]
 set_property PACKAGE_PIN T18 [get_ports button_clr_undeb]
 set_property PACKAGE_PIN T17 [get_ports reset]
 
@@ -43,15 +43,14 @@ set_property IOSTANDARD LVCMOS33 [get_ports button_clr_undeb]
 set_property IOSTANDARD LVCMOS33 [get_ports reset]
 
 # Sliders
-set_property PACKAGE_PIN V17 [get_ports slider_1_undeb]
-set_property PACKAGE_PIN V16 [get_ports slider_2_undeb]
-set_property PACKAGE_PIN W16 [get_ports slider_3_undeb]
-set_property PACKAGE_PIN W17 [get_ports slider_4_undeb]
-set_property PACKAGE_PIN R2 [get_ports arithmetic_select]
+set_property PACKAGE_PIN V17 [get_ports sld_1]
+set_property PACKAGE_PIN V16 [get_ports sld_2]
+set_property PACKAGE_PIN W16 [get_ports sld_3]
+set_property PACKAGE_PIN W17 [get_ports sld_4]
+set_property PACKAGE_PIN R2 [get_ports sld_arith]
 
-set_property IOSTANDARD LVCMOS33 [get_ports slider_1_undeb]
-set_property IOSTANDARD LVCMOS33 [get_ports slider_2_undeb]
-set_property IOSTANDARD LVCMOS33 [get_ports slider_3_undeb]
-set_property IOSTANDARD LVCMOS33 [get_ports slider_4_undeb]
-set_property IOSTANDARD LVCMOS33 [get_ports arithmetic_select]
-
+set_property IOSTANDARD LVCMOS33 [get_ports sld_1]
+set_property IOSTANDARD LVCMOS33 [get_ports sld_2]
+set_property IOSTANDARD LVCMOS33 [get_ports sld_3]
+set_property IOSTANDARD LVCMOS33 [get_ports sld_4]
+set_property IOSTANDARD LVCMOS33 [get_ports sld_arith]
