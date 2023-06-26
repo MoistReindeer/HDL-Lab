@@ -1,5 +1,5 @@
 module debounce #(
-    parameter DB_OVERFLOW = 100000000
+    parameter DB_OVERFLOW = 999999
 )(
     input logic clk,
     input logic rst_ext,
