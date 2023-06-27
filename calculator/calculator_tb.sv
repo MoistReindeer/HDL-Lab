@@ -82,6 +82,20 @@ module calculator_tb ();
         sld_arith_in = 0;
         #10ns;
 
+        btn_ent_in = 1;
+        #23ns;
+        btn_ent_in = 0;
+        #2ns;
+        sld_4_in = 1;
+        #120ns;
+        sld_4_in = 0;
+        #20ns;
+
+        btn_clr_in = 1;
+        #20ns;
+        btn_clr_in = 0;
+        #20ns;
+
         $finish;
     end
 endmodule
