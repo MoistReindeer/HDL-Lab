@@ -26,19 +26,8 @@ module calculator #(
         .reset(reset),
         .button_clr_undeb(button_clr_undeb),
         .button_ent_undeb(button_ent_undeb),
-        //.slider_1_undeb(slider_1_undeb),
-        //.slider_2_undeb(slider_2_undeb),
-        //.slider_3_undeb(slider_3_undeb),
-        //.slider_4_undeb(slider_4_undeb),
-        //.slider_arith_undeb(arithmetic_select),
         .button_clr(btn_clr),
-        .button_ent(btn_ent)
-        //.slider_1(sld_1),
-        //.slider_2(sld_2),
-        //.slider_3(sld_3),
-        //.slider_4(sld_4),
-        //.slider_arith(sld_arith)
-        );
+        .button_ent(btn_ent));
     
     // Module to handle the slider input
     logic output_number_select = 0;
