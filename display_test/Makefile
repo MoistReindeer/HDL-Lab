@@ -7,4 +7,4 @@ SOURCES := $(current_dir)/top.sv \
 # XDC File
 XDC := $(current_dir)/basys3.xdc
 
-include ${current_dir}/../../f4pga-examples/common/common.mk
+include ${current_dir}/../f4pga-examples/common/common.mk
