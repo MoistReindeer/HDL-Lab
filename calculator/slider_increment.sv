@@ -8,6 +8,7 @@ module slider_increment #(
     input logic slider_3,
     input logic slider_4,
     input logic write_number_select,
+    input logic btn_clr,
     output logic [13:0] number_1,
     output logic [13:0] number_2
 );
@@ -24,7 +25,7 @@ module slider_increment #(
     logic [25:0] cnt_4;
 
     always_ff @( posedge clk ) begin
-        if (rst) begin
+        if (rst || btn_clr) begin
             cnt_1 <= 0;
             cnt_2 <= 0;
             cnt_3 <= 0;
@@ -42,7 +43,7 @@ module slider_increment #(
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(rst_ext) begin
+        if(rst_ext || btn_clr) begin
             number_1 <= 0;
             number_2 <= 0;
         end

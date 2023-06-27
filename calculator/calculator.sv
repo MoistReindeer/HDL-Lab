@@ -34,7 +34,9 @@ module calculator #(
     logic [13:0] number_2;
 
     always_ff @( posedge clk ) begin
-        if (btn_ent)
+        if(reset || btn_clr)
+            output_number_select <= 0;
+        else if (btn_ent)
             output_number_select <= output_number_select + 1;
         else
             output_number_select <= output_number_select;
@@ -50,6 +52,7 @@ module calculator #(
         .slider_3(sld_3),
         .slider_4(sld_4),
         .write_number_select(output_number_select),
+        .btn_clr(btn_clr),
         .number_1(number_1),
         .number_2(number_2));
     
@@ -67,7 +70,7 @@ module calculator #(
     logic [1:0] select_number;
     
     always_ff @( posedge clk ) begin
-        if (reset)
+        if (reset || btn_clr)
             select_number <= 0;
         else if (btn_ent)
             select_number <= select_number + 1;
