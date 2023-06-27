@@ -18,7 +18,6 @@ module calculator #(
 );
     // Module to debounce and sync buttons and sliders
     logic btn_clr, btn_ent;
-    //logic sld_1, sld_2, sld_3, sld_4, sld_arith;
     calculator_input #(
         .DB_OVERFLOW(DB_OVERFLOW)
     ) input_mod (
