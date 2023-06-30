@@ -68,5 +68,12 @@ ifeq ($(GTKW),)
 	gtkwave ./build/calculator.fst &
 endif
 
+./build/calculator_enter.fst: calculator_enter_tb.sv calculator.sv slider_increment.sv input_sync.sv debounce.sv arithmetic.sv bcd_mux.sv seg_dec.sv
+	verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ calculator_enter_tb.sv calculator.sv slider_increment.sv input_sync.sv debounce.sv arithmetic.sv bcd_mux.sv seg_dec.sv
+	./build/Vcalculator_enter_tb
+ifeq ($(GTKW),)
+	gtkwave ./build/calculator_enter.fst &
+endif
+
 clean:
 	rm -rd build
