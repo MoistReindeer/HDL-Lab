@@ -29,7 +29,7 @@ module calculator #(
         .button_ent(btn_ent));
     
     // Module to handle the slider input
-    logic [0:0] output_number_select = 0;
+    logic output_number_select = 0;
     logic [13:0] number_1;
     logic [13:0] number_2;
 
