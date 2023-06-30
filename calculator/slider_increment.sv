@@ -43,7 +43,7 @@ module slider_increment #(
 
     // Increment based on active slider, default max: 32500000
     always_ff @( posedge clk ) begin
-        if(rst_ext || btn_clr) begin
+        if(rst_ext || btn_clr || number_1 > 9999 || number_2 > 9999) begin
             number_1 <= 0;
             number_2 <= 0;
         end
