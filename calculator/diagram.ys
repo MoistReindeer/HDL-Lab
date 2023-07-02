@@ -1,0 +1,5 @@
+read_verilog -sv calculator.sv arithmetic.sv bcd_mux.sv calculator_input.sv debounce.sv display.sv input_sync.sv seg_dec.sv slider_increment.sv split_number.sv
+prep -top calculator
+proc
+opt
+write_json -compat-int svg.json
