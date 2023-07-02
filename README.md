@@ -6,6 +6,7 @@ A repo to document some F4PGA related projects
 
 + [**The Calculator**](calculator/)
     + The main project
+    + [Circuit Diagram](calculator/circuits)
 + [Display Test](display_test/)
     + A small project to test the display logic
 + [Lab 4 Counter](lab4_myounter/)
