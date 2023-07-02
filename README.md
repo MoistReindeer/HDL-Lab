@@ -1,6 +1,6 @@
 # HDL-Files
 
-A repo to document some F4PGA related scripts
+A repo to document some F4PGA related projects
 
 ## F4PGA-Installation
 
@@ -16,23 +16,11 @@ $ ./install.sh -eos
 $ ./install.sh -xc7
 ```
 
-## YOSYS OSS-CAD Suite
-```
-# Install from AUR
-$ yay -S oss-cad-suite-build-bin
-
-# Activate the environment
-$ source /opt/oss-cad-suite/environment
-```
-
 ## Additional tools
 
 ```
 # Install verilator for SystemVerilog simulator
 $ sudo pacman -S verilator
-
-# Alternatively install iverilog for simulation
-$ sudo pacman -S iverilog
 
 # Install gtkwave to view simulation results
 $ sudo pacman -S gtkwave
@@ -55,12 +43,11 @@ $ conda activate $FPGA_FAM
 ## Simulation
 
 ```
-# First send the system-verilog files through iverilog
-$ iverilog -g2012 -o ./build/iverilog.out <<*.sv files>>
-
-# Now simulate the files with vpp
-$ vvp ./build/iverilog.out 
+# First build and run the simulation with verilator
+$ verilator --binary -j 0 -Wall --trace-fst -Mdir ./build/ <<*.sv files>>
+$ ./build/V<<tb file>>
 
 # Now view the results with gtkwave
-$ gtkwave ./build/out.vcd
+$ gtkwave ./build/<<output name>>.fst
+# The output name is set within the testbench
 ```
