@@ -2,6 +2,15 @@
 
 A repo to document some F4PGA related projects
 
+## Projects
+
++ [**The Calculator**](calculator/)
+    + The main project
++ [Display Test](display_test/)
+    + A small project to test the display logic
++ [Lab 4 Counter](lab4_myounter/)
+    + The Counter from the 4th Lab
+
 ## F4PGA-Installation
 
 The F4PGA installation guide currently supports the EOS-Quicklogic-S3 and the Xilinx Artix 7 boards.
